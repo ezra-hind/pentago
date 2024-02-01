@@ -1,5 +1,3 @@
-
-import Strike from './Strike'
 import Tile from './tile'
 
 
@@ -17,7 +15,6 @@ function Board( {tiles, onTileClick, playerTurn, rotation}) {
         <Tile playerTurn={playerTurn} onClick={()=>onTileClick(6)} value={tiles[6]} className='left-border right-border bottom-border'></Tile>
         <Tile playerTurn={playerTurn} onClick={()=>onTileClick(7)} value={tiles[7]} className='right-border bottom-border'></Tile>
         <Tile playerTurn={playerTurn} onClick={()=>onTileClick(8)} value={tiles[8]} className='bottom-border right-border'></Tile>
-        <Strike></Strike>
     </div>
     )
 }

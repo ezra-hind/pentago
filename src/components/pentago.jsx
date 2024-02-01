@@ -1,8 +1,14 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Board from "./board"
+import Strike from "./Strike";
 
 const PlayerX = 'X';
 const PlayerO = 'O';
+
+function checkWinner() {
+    console.log("Check Winner");
+}
+
 
 function Pentago() {
     const [tiles1, setTiles1] = useState(Array(9).fill(null));
@@ -13,6 +19,7 @@ function Pentago() {
     const [rot2, setRot2] = useState(0);
     const [rot3, setRot3] = useState(0);
     const [rot4, setRot4] = useState(0);
+    const [strikeClass, setStrikeClass] = useState();
     const [playerTurn, setPlayerTurn] = useState(PlayerX);
 
     const handleTileClick = (index,board) => {
@@ -51,6 +58,7 @@ function Pentago() {
         }
     }
 
+    useEffect(() => { checkWinner();}, [...tiles1,...tiles2,...tiles3,...tiles4])
 
 
     return (
@@ -59,6 +67,7 @@ function Pentago() {
             <Board playerTurn={playerTurn} tiles={tiles2} onTileClick={(index) => handleTileClick(index, tiles2)} rotation={rot2}></Board>
             <Board playerTurn={playerTurn} tiles={tiles3} onTileClick={(index) => handleTileClick(index, tiles3)} rotation={rot3}></Board>
             <Board playerTurn={playerTurn} tiles={tiles4} onTileClick={(index) => handleTileClick(index, tiles4)} rotation={rot4}></Board>
+            <Strike strikeClass={strikeClass}></Strike>
         </div>
     )
 }
